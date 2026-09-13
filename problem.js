@@ -22,7 +22,7 @@ var isIsomorphic = function (s, t) {
   return true;
 };
 
-console.log(isIsomorphic("egg", "add"));
+// console.log(isIsomorphic("egg", "add"));
 
 /* ------------------------------------------------------------------ */
 /* 02. Word Pattern                                                     */
@@ -49,6 +49,8 @@ var wordPattern = function (pattern, s) {
   return true;
 };
 
+// console.log(wordPattern("abba", "dog cat cat dog"));
+
 /* ------------------------------------------------------------------ */
 /* 03. Find the Difference                                             */
 /* ------------------------------------------------------------------ */
@@ -62,39 +64,29 @@ var findTheDifference = function (s, t) {
   return String.fromCharCode(code);
 };
 
+// console.log(findTheDifference("abcd", "abcde"));
+
 /* ------------------------------------------------------------------ */
 /* 04. Reverse Linked List                                             */
 /* ------------------------------------------------------------------ */
 
 var reverseList = function (head) {
-  let prev = null;
-  let curr = head;
-
-  while (curr !== null) {
-    const next = curr.next;
-    curr.next = prev;
-    prev = curr;
-    curr = next;
-  }
-
-  return prev;
+  return head.reverse();
 };
+
+// console.log(reverseList([1, 2, 3, 4, 5]));
 
 /* ------------------------------------------------------------------ */
 /* 05. Middle of the Linked List                                       */
 /* ------------------------------------------------------------------ */
 
 var middleNode = function (head) {
-  let slow = head;
-  let fast = head;
+  let middle = Math.floor(head.length / 2);
 
-  while (fast !== null && fast.next !== null) {
-    slow = slow.next;
-    fast = fast.next.next;
-  }
-
-  return slow;
+  return head.slice(middle);
 };
+
+console.log(middleNode([1, 2, 3, 4, 5]));
 
 /* ------------------------------------------------------------------ */
 /* 06. Product of Array Except Self                                    */
@@ -119,28 +111,21 @@ var productExceptSelf = function (nums) {
   return result;
 };
 
+// console.log(productExceptSelf([1, 2, 3, 4]));
+
 /* ------------------------------------------------------------------ */
 /* 07. Remove Nth Node From End of List                                 */
 /* ------------------------------------------------------------------ */
 
 var removeNthFromEnd = function (head, n) {
-  const dummy = new ListNode(0, head);
-  let fast = dummy;
-  let slow = dummy;
+  let index = head.length - n;
 
-  for (let i = 0; i < n; i++) {
-    fast = fast.next;
-  }
+  head.splice(index, 1);
 
-  while (fast.next !== null) {
-    fast = fast.next;
-    slow = slow.next;
-  }
-
-  slow.next = slow.next.next;
-
-  return dummy.next;
+  return head;
 };
+
+// console.log(removeNthFromEnd([1, 2, 3, 4, 5], 2));
 
 /* ------------------------------------------------------------------ */
 /* 08. Find First and Last Position of Element in Sorted Array          */
@@ -171,6 +156,8 @@ var searchRange = function (nums, target) {
 
   return [findBound(true), findBound(false)];
 };
+
+// console.log(searchRange([5, 7, 7, 8, 8, 10], 8));
 
 /* ------------------------------------------------------------------ */
 /* 09. Permutation in String                                            */
@@ -207,6 +194,8 @@ var checkInclusion = function (s1, s2) {
   return false;
 };
 
+// console.log(checkInclusion("ab", "eidbaooo"));
+
 /* ------------------------------------------------------------------ */
 /* 10. Find All Anagrams in a String                                    */
 /* ------------------------------------------------------------------ */
@@ -242,3 +231,4 @@ var findAnagrams = function (s, p) {
 
   return result;
 };
+console.log(findAnagrams("cbaebabacd", "abc"));
